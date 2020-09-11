@@ -1,4 +1,3 @@
-import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
 import { StyleSheet, FlatList } from 'react-native';
 
@@ -6,33 +5,27 @@ import { Movie } from '../types';
 import Colors from '../constants/Colors';
 import { MonoText } from './StyledText';
 import { Text, View } from './Themed';
-import MediaCard from '../components/MediaCard'
+import MediaCard from '../components/MediaCard';
+// import GridList from 'react-native-grid-list';
+import { FlatGrid } from 'react-native-super-grid';
 
 export default function MoviesList({ items }: { items: Movie[] }) {
+  const renderItem = ({ item, index }) => {
+    return (< MediaCard movie={item} key={index} />)
+  };
+
   return (
     <View style={styles.container}>
-      <FlatList style={styles.list}
-        data={[
-          { key: 'Devin' },
-          { key: 'Dan' },
-          { key: 'Dominic' },
-          { key: 'Jackson' },
-          { key: 'James' },
-          { key: 'Joel' },
-          { key: 'John' },
-          { key: 'Jillian' },
-          { key: 'Jimmy' },
-          { key: 'Julie' },
-        ]}
-        renderItem={({ item }) => <MediaCard movie={item} />}
+      <FlatGrid
+        data={items}
+        numColumns={3}
+        itemDimension={120}
+        spacing={10}
+        fixed
+        renderItem={renderItem}
+        refreshing={true}
       />
     </View>
-  );
-}
-
-function handleHelpPress() {
-  WebBrowser.openBrowserAsync(
-    'https://docs.expo.io/get-started/create-a-new-app/#opening-the-app-on-your-phonetablet'
   );
 }
 
@@ -41,7 +34,7 @@ const styles = StyleSheet.create({
     color: '#83CFDF'
   },
   list: {
-    flexDirection: 'row'
+    // flexDirection: 'row'
   },
   container: {
     flex: 1,

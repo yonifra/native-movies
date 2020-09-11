@@ -4,20 +4,35 @@ import { StyleSheet, TextInput } from 'react-native';
 import MoviesList from '../components/MoviesList';
 import { Text, View } from '../components/Themed';
 import SearchBar from '../components/SearchBar';
-
-function getMovies(url: string) {
-
-}
+import { Movie } from '../types';
 
 function onChangeText(text: string) {
-
+  console.log('search string is now', text)
 }
 
+
+async function search(query: string): Movie[] {
+  const url = `https://api.themoviedb.org/3/search/movie?api_key=5dcf7f28a88be0edc01bbbde06f024ab&language=en-US&query=${query}&page=1&include_adult=false`;
+
+  try {
+    console.log('fetching from', url)
+    const res = await fetch(url);
+    const data = await res.json()
+    return data.results
+  } catch (error) {
+    console.error(error)
+    return []
+  }
+}
+
+
 export default function TabOneScreen() {
+  const [movies, setMovies] = React.useState([]);
+
   return (
     <View style={styles.container}>
-      <SearchBar />
-      <MoviesList path="/screens/TabOneScreen.tsx" items={[]} />
+      <SearchBar searchFn={search} hook={setMovies} />
+      <MoviesList items={movies} />
     </View>
   );
 }

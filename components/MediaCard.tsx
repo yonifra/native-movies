@@ -3,19 +3,21 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { Movie } from '../types'
 
 const openMovie = e => {
-    console.log(e)
+    console.log('Not yet implemented')
 }
 
 const MediaCard = ({ movie }: { movie: Movie }) => {
-    console.log('Got movie:', movie);
+    console.log('Rendering movie:', movie);
 
     return (
         <TouchableOpacity style={styles.container} onPress={e => openMovie(e)}>
-            <Image style={styles.poster} source={{ uri: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg==' }} />
+            <Image style={styles.poster} source={{
+                uri: 'https://image.tmdb.org/t/p/w94_and_h141_bestv2' + movie.poster_path
+            }} />
 
             <View style={styles.detailContainer}>
-                <Text style={styles.header}>Movie Name</Text>
-                <Text style={styles.rating}>8.2</Text>
+                <Text style={styles.header}>{movie.title}</Text>
+                <Text style={styles.rating}>{movie.vote_average}</Text>
             </View>
         </TouchableOpacity>
     );
@@ -25,6 +27,7 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: '#373B69',
         margin: 4,
+        maxWidth: 141,
         borderRadius: 3,
         color: '#EBE5E2',
     },
@@ -33,8 +36,8 @@ const styles = StyleSheet.create({
         color: '#EBE5E2'
     },
     poster: {
-        height: 150,
-        width: 130
+        height: 141,
+        width: 94
     },
     detailContainer: {
         padding: 10,

@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
-import { StyleSheet, TextInput } from 'react-native';
+import { StyleSheet, TextInput, Button, View } from 'react-native';
 
-const search = (query: string) => {
-    // TODO: search for movie / series here
-}
-
-const SearchBar = () => {
-    const [value, onChangeText] = React.useState('');
+const SearchBar = ({ searchFn, hook }) => {
+    const [searchQuery, onChangeText] = React.useState('');
 
     return (
-        <TextInput
-            style={styles.searchBar}
-            onChangeText={text => onChangeText(text)}
-            value={value}
-            placeholder='Search'
-            autoCompleteType='off'
-            placeholderTextColor='gray'
-        />
+        <View style={styles.searchRowContainer}>
+            <TextInput
+                style={styles.searchBar}
+                onChangeText={text => onChangeText(text)}
+                value={searchQuery}
+                placeholder='Search'
+                autoCompleteType='off'
+                placeholderTextColor='gray'
+            />
+            <Button title="Go" onPress={async () => {
+                const result = await searchFn(searchQuery)
+                hook(result)
+            }} />
+        </View>
     );
 }
 
@@ -37,7 +39,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         fontSize: 15,
         color: '#708ED2',
-    }
+    },
+    searchRowContainer: {
+        backgroundColor: '#272532',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        flexDirection: 'row',
+        width: '90%',
+    },
 });
 
 export default SearchBar;
