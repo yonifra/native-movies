@@ -6,13 +6,14 @@ const search = (query: string) => {
 }
 
 const SearchBar = () => {
-    const [value, onChangeText] = React.useState('Enter media name...');
+    const [value, onChangeText] = React.useState('');
 
     return (
         <TextInput
             style={styles.searchBar}
             onChangeText={text => onChangeText(text)}
             value={value}
+            placeholder='Search'
             autoCompleteType='off'
         />
     );

@@ -1,15 +1,31 @@
 import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { StyleSheet, FlatList } from 'react-native';
 
+import { Movie } from '../types';
 import Colors from '../constants/Colors';
 import { MonoText } from './StyledText';
 import { Text, View } from './Themed';
+import MediaCard from '../components/MediaCard'
 
-export default function EditScreenInfo({ path, items }: { path: string, items: any[] }) {
+export default function MoviesList({ items }: { items: Movie[] }) {
   return (
-    <View>
-      <Text style={styles.title}>Hey</Text>
+    <View style={styles.container}>
+      <FlatList style={styles.list}
+        data={[
+          { key: 'Devin' },
+          { key: 'Dan' },
+          { key: 'Dominic' },
+          { key: 'Jackson' },
+          { key: 'James' },
+          { key: 'Joel' },
+          { key: 'John' },
+          { key: 'Jillian' },
+          { key: 'Jimmy' },
+          { key: 'Julie' },
+        ]}
+        renderItem={({ item }) => <MediaCard movie={item} />}
+      />
     </View>
   );
 }
@@ -24,9 +40,13 @@ const styles = StyleSheet.create({
   title: {
     color: '#83CFDF'
   },
+  list: {
+    flexDirection: 'row'
+  },
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    width: '90%',
+    backgroundColor: 'transparent',
   },
   developmentModeText: {
     marginBottom: 20,
