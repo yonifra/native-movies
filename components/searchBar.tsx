@@ -15,6 +15,7 @@ const SearchBar = () => {
             value={value}
             placeholder='Search'
             autoCompleteType='off'
+            placeholderTextColor='gray'
         />
     );
 }
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         alignItems: 'center',
         fontSize: 15,
-        color: '#708ED2'
+        color: '#708ED2',
     }
 });
 
