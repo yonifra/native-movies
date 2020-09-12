@@ -32,7 +32,8 @@ const styles = StyleSheet.create({
         color: '#EBE5E2',
     },
     header: {
-        fontSize: 12,
+        fontSize: 14,
+        fontWeight: '600',
         color: '#EBE5E2'
     },
     poster: {
