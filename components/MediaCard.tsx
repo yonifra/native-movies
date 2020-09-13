@@ -6,6 +6,15 @@ const openMovie = e => {
     console.log('Not yet implemented')
 }
 
+const getYear = (dateString: string): string => {
+    const year = new Date(dateString).getFullYear().toString();
+    if (year === 'NaN') {
+        return 'N/A'
+    }
+
+    return year
+}
+
 const MediaCard = ({ movie }: { movie: Movie }) => {
     console.log('Rendering movie:', movie);
 
@@ -18,7 +27,10 @@ const MediaCard = ({ movie }: { movie: Movie }) => {
 
             <View style={styles.detailContainer}>
                 <Text style={styles.title}>{movie.title}</Text>
-                <Text style={styles.rating}>{movie.vote_average}</Text>
+                <View style={styles.infoRow}>
+                    <Text style={styles.releaseDate}>{getYear(movie.release_date)}</Text>
+                    <Text style={styles.rating}>{movie.vote_average}</Text>
+                </View>
             </View>
         </TouchableOpacity>
     );
@@ -30,7 +42,7 @@ const styles = StyleSheet.create({
         margin: 4,
         maxWidth: 120,
         height: 230,
-        borderRadius: 3,
+        borderRadius: 5,
         color: '#EBE5E2',
     },
     title: {
@@ -46,7 +58,8 @@ const styles = StyleSheet.create({
     },
     detailContainer: {
         padding: 10,
-        flexDirection: 'row',
+        flex: 1,
+        flexDirection: 'column',
         justifyContent: 'space-between',
         width: '100%'
     },
@@ -55,9 +68,22 @@ const styles = StyleSheet.create({
         borderRadius: 3,
         textAlign: 'center',
         padding: 3,
+        fontSize: 12,
         backgroundColor: '#272532',
-        color: '#83CFDF'
+        color: '#83CFDF',
+        justifyContent: 'center', //Centered vertically
     },
+    infoRow: {
+        flexDirection: 'row',
+        flex: 2
+    },
+    releaseDate: {
+        flex: 3,
+        textAlign: 'left',
+        justifyContent: 'center', //Centered vertically
+        color: '#83CFDF',
+        fontSize: 10
+    }
 })
 
 export default MediaCard;
