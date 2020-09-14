@@ -1,17 +1,13 @@
 import React from 'react';
-import { StyleSheet, FlatList } from 'react-native';
-
+import { StyleSheet } from 'react-native';
 import { Movie } from '../types';
-import Colors from '../constants/Colors';
-import { MonoText } from './StyledText';
-import { Text, View } from './Themed';
+import { View } from './Themed';
 import MediaCard from '../components/MediaCard';
-// import GridList from 'react-native-grid-list';
 import { FlatGrid } from 'react-native-super-grid';
 
-export default function MoviesList({ items, navigation }: { items: Movie[], navigation: any }) {
+export default function MoviesList({ items }: { items: Movie[] }) {
   const renderItem = ({ item, index }: { item: Movie, index: number }) => {
-    return (< MediaCard movie={item} key={index} navigation={navigation} />)
+    return (< MediaCard movie={item} key={index} />)
   };
 
   return (

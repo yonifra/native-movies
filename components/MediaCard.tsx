@@ -1,13 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, Button } from 'react-native';
 import DetailsScreen from '../screens/DetailsScreen'
 import { Movie } from '../types'
 import Modal from 'react-native-modal'
-
-const openMovie = (movie: Movie, navigation: any) => {
-    console.log(movie.title)
-    navigation.navigate('DetailsScreen', { names: ['Brent', 'Satya', 'Michaś'] })
-}
 
 const getYear = (dateString: string): string => {
     const year = new Date(dateString).getFullYear().toString();
@@ -18,13 +13,11 @@ const getYear = (dateString: string): string => {
     return year
 }
 
-const MediaCard = ({ movie, navigation }: { movie: Movie, navigation: any }) => {
-    // console.log('Rendering movie:', movie);
+const MediaCard = ({ movie }: { movie: Movie }) => {
     const [isModalOpen, setModalOpen] = React.useState(false)
 
     return (
         <TouchableOpacity style={styles.container} onPress={() => {
-            console.log('opening modal')
             setModalOpen(true)
         }}>
             <Modal isVisible={isModalOpen}>
