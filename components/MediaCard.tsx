@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import DetailsScreen from '../screens/DetailsScreen'
 import { Movie } from '../types'
+import Modal from 'react-native-modal'
 
 const openMovie = (movie: Movie, navigation: any) => {
     console.log(movie.title)
@@ -19,9 +20,16 @@ const getYear = (dateString: string): string => {
 
 const MediaCard = ({ movie, navigation }: { movie: Movie, navigation: any }) => {
     console.log('Rendering movie:', movie);
+    const [isModalOpen, setModalOpen] = React.useState(false)
 
     return (
-        <TouchableOpacity style={styles.container} onPress={e => openMovie(movie, navigation)}>
+        <TouchableOpacity style={styles.container} onPress={e => setModalOpen(true)}>
+            <Modal>
+                <View style={{ flex: 1 }} isVisible={isModalOpen}>
+                    <Text>{movie.title}</Text>
+                </View>
+            </Modal>
+
             <Image style={styles.poster} source={{
                 uri: movie.poster_path ? 'https://image.tmdb.org/t/p/w94_and_h141_bestv2' + movie.poster_path : 'https://via.placeholder.com/150/000000/FFFFFF/?text=No poster'
             }} />
