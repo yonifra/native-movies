@@ -50,6 +50,12 @@ const styles = StyleSheet.create({
         height: 230,
         borderRadius: 5,
         color: '#EBE5E2',
+        shadowColor: 'black',
+        shadowOpacity: 0.25,
+        elevation: 1,
+        shadowRadius: 5,
+        shadowOffset: { width: 4, height: 4 },
+        flex: 1
     },
     title: {
         fontSize: 14,
