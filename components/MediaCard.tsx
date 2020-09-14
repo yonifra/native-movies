@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import DetailsScreen from '../screens/DetailsScreen'
 import { Movie } from '../types'
 
-const openMovie = e => {
-    console.log('Not yet implemented')
+const openMovie = (movie: Movie, navigation: any) => {
+    console.log(movie.title)
+    navigation.navigate('DetailsScreen', { names: ['Brent', 'Satya', 'Michaś'] })
 }
 
 const getYear = (dateString: string): string => {
@@ -15,13 +17,12 @@ const getYear = (dateString: string): string => {
     return year
 }
 
-const MediaCard = ({ movie }: { movie: Movie }) => {
+const MediaCard = ({ movie, navigation }: { movie: Movie, navigation: any }) => {
     console.log('Rendering movie:', movie);
 
     return (
-        <TouchableOpacity style={styles.container} onPress={e => openMovie(e)}>
+        <TouchableOpacity style={styles.container} onPress={e => openMovie(movie, navigation)}>
             <Image style={styles.poster} source={{
-
                 uri: movie.poster_path ? 'https://image.tmdb.org/t/p/w94_and_h141_bestv2' + movie.poster_path : 'https://via.placeholder.com/150/000000/FFFFFF/?text=No poster'
             }} />
 
