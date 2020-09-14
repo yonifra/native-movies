@@ -10,7 +10,7 @@ import MediaCard from '../components/MediaCard';
 import { FlatGrid } from 'react-native-super-grid';
 
 export default function MoviesList({ items, navigation }: { items: Movie[], navigation: any }) {
-  const renderItem = ({ item, index }) => {
+  const renderItem = ({ item, index }: { item: Movie, index: number }) => {
     return (< MediaCard movie={item} key={index} navigation={navigation} />)
   };
 
