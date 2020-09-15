@@ -13,3 +13,7 @@ Building this to gain some experience with React Native, but will hopefully grad
 * Get notified for releases or news on favored movies.
 * Share on social media.
 * Add Trakt integration (FUTURE)
+
+Current status:
+
+![Current progress screenshot](https://i.imgur.com/3DhGiMe.png "Current progress of the project")
