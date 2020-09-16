@@ -11,7 +11,7 @@ export default function DetailsScreen({ data }: { data: Movie }) {
                     uri: data.poster_path ? 'https://image.tmdb.org/t/p/w94_and_h141_bestv2' + data.poster_path : 'https://via.placeholder.com/150/000000/FFFFFF/?text=No poster'
                 }} />
                 <View style={{ flexDirection: 'column', backgroundColor: 'transparent', flex: 2 }}>
-                    <Text style={styles.voteString}>{data.vote_average}</Text>
+                    <Text style={styles.voteString}>{data.vote_average === 0 ? 'Not rated' : data.vote_average}</Text>
                     <Text style={styles.title}>{data.title}</Text>
                     <Text style={styles.regularText}>{new Date(data.release_date).toLocaleDateString()}</Text>
                 </View>

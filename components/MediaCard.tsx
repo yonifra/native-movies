@@ -35,7 +35,7 @@ const MediaCard = ({ movie }: { movie: Movie }) => {
                 <Text style={styles.title}>{movie.title}</Text>
                 <View style={styles.infoRow}>
                     <Text style={styles.releaseDate}>{getYear(movie.release_date)}</Text>
-                    <Text style={styles.rating}>{movie.vote_average}</Text>
+                    <Text style={styles.rating}>{movie.vote_average === 0 ? 'N/A' : movie.vote_average}</Text>
                 </View>
             </View>
         </TouchableOpacity>
@@ -46,8 +46,8 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: '#373B69',
         margin: 4,
-        maxWidth: 120,
-        height: 230,
+        width: 140,
+        height: 220,
         borderRadius: 5,
         color: '#EBE5E2',
         shadowColor: 'black',
@@ -65,11 +65,12 @@ const styles = StyleSheet.create({
         letterSpacing: -0.2
     },
     poster: {
-        height: 161,
+        flex: 4,
+        height: '100%',
         width: '100%'
     },
     detailContainer: {
-        padding: 10,
+        padding: 5,
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'space-between',
