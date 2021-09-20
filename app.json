@@ -19,7 +19,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "nativemovies"
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
