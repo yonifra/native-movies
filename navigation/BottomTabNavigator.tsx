@@ -1,4 +1,4 @@
-import Icon from 'react-native-ionicons';
+import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
@@ -18,28 +18,24 @@ export default function BottomTabNavigator() {
     <BottomTab.Navigator
       initialRouteName="TabOne"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
+
       <BottomTab.Screen
         name="Movies"
         component={TabOneNavigator}
         options={{
-          tabBarIcon: ({ color }) => <Icon name="videocam-outline" size={40} color={color} />,
+          tabBarIcon: ({ color }) => <Ionicons name="videocam" size={24} color={color} />,
         }}
       />
+
       <BottomTab.Screen
         name="TV Series"
         component={TabTwoNavigator}
         options={{
-          tabBarIcon: ({ color }) => <Icon name="tv-outline" size={40} color={color} />,
+          tabBarIcon: ({ color }) => <Ionicons name="tv" size={24} color={color} />,
         }}
       />
     </BottomTab.Navigator>
   );
-}
-
-// You can explore the built-in icon families and icons on the web at:
-// https://icons.expo.fyi/
-function TabBarIcon(props: { name: string; color: string }) {
-  return <Icon name="add-outline" size={30} style={{ marginBottom: -3 }} {...props} />;
 }
 
 // Each tab has its own navigation stack, you can read more about this pattern here:

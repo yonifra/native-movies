@@ -16,6 +16,7 @@ const SearchBar = ({ searchFn, hook }) => {
             />
             <Button title="Go" onPress={async () => {
                 const result = await searchFn(searchQuery)
+                console.log(`Results are ${result}`)
                 hook(result)
             }} />
         </View>
